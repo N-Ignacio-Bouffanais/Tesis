@@ -5,7 +5,7 @@ const data = {
   datasets: [
     {
       label: "Temperatura",
-      fill: true,
+      fill: false,
       lineTension: 0.1,
       backgroundColor: "rgba(67,56,202)",
       borderColor: "rgba(67,56,202)",
@@ -27,17 +27,17 @@ const data = {
   ],
 };
 
-const Middle = () => {
+const Middle = (props) => {
   return (
-    <div className="bg-white ml-3 shadow-sm w-full mr-5 h-96 border rounded-xl border-gray-100">
-      <div className="border b p-3 border-gray-100">
-        <p className="font-semibold font-xl">Sensor de temperatura</p>
+    <div className="bg-white  shadow-sm w-6/12 mr-3 h-80 border rounded-xl border-gray-100">
+      <div className="border p-2 border-gray-100 text-center">
+        <p className="font-semibold font-xl">{props.title}</p>
       </div>
-      <div>
+      <div className="p-2">
         <Line
           data={data}
           width={90}
-          height={300}
+          height={250}
           options={{ maintainAspectRatio: false }}
         />
       </div>

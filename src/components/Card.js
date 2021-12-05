@@ -16,7 +16,7 @@ const Color = [
   "from-red-700 to-red-500",
   "from-blue-700 to-blue-500",
   "from-green-700 to-green-500",
-  "from-green-700 to-green-500"
+  "from-yellow-700 to-yellow-500"
 ];
 
 const Card = (props) => {
@@ -35,7 +35,7 @@ const Card = (props) => {
     >
       <div className="flex justify-between">
         <div></div>
-        <div className="w-8 h-8 md:w-12 md:h-12 flex items-center justify-center bg-gray-300 rounded-xl m-4 bg-opacity-30">
+        <div className="w-8 h-8 md:w-11 md:h-6 flex items-center justify-center bg-gray-300 rounded-xl m-4 bg-opacity-30">
           {arrayIcon[props.icon]}
         </div>
       </div>

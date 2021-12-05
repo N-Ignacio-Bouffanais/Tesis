@@ -14,6 +14,9 @@ const dashboard = () => {
           <Container />
         </div>
       </div>
+      <div>
+        <p>prueba</p>
+      </div>
     </div>
   );
 };

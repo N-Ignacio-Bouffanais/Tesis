@@ -21,39 +21,42 @@ export default function Home({trabajadores}) {
       <div className="py-8 text-center">
         <h2 className="font-extrabold text-6xl">Tabla de usuarios</h2>
       </div>
-      <div className="row">
-        <div className="col md-12">
-          <table className="table text-gray-900 border-separate space-y-6 ">
-            <thead className="text-gray-900 text-lg font-bold text-center">
+      <div className="container flex justify-center mx-auto">
+        <div className="flex flex-col">
+          <table className="table text-gray-900 border-separate border border-green-800 space-y-2 p-4 ">
+            <thead className="text-gray-900 text-lg font-bold text-center bg-gray-50">
               <tr>
-                <th>Fecha de creacion</th>
-                <th>Fecha de actualizacion</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>edad</th>
-                <th>Area de trabajo</th>
-                <th>Acciones</th>
+                <th className="px-3 ">Fecha de creacion</th>
+                <th className="px-3 ">Fecha de actualizacion</th>
+                <th className="px-3 ">Nombre</th>
+                <th className="px-3 ">Apellido</th>
+                <th className="px-3 ">edad</th>
+                <th className="px-3 ">Area de trabajo</th>
+                <th className="px-3 ">Acciones</th>
               </tr>
             </thead>
             <tbody>
               {trabajadores.map((trabajador) => (
                 <tr key={trabajador._id}>
-                  <td>{trabajador.createdAt}</td>
-                  <td>{trabajador.updatedAt}</td>
-                  <td>{trabajador.nombre}</td>
-                  <td>{trabajador.apellido}</td>
-                  <td>{trabajador.edad}</td>
-                  <td>{trabajador.area_trabajo}</td>
+                  <td className="px-3 ">{trabajador.createdAt}</td>
+                  <td className="px-3 ">{trabajador.updatedAt}</td>
+                  <td className="px-3 ">{trabajador.nombre}</td>
+                  <td className="px-3 ">{trabajador.apellido}</td>
+                  <td className="px-3 ">{trabajador.edad}</td>
+                  <td className="px-3 ">{trabajador.area_trabajo}</td>
                   <td className="inline-flex space-x-2">
                     <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
                       Editar
                     </button>
-                    
-                    <button 
-                    className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded"
-                    onClick={()=> router.push(`/Trabajadores/${trabajador._id}`)}
+
+                    <button
+                      className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded"
+                      onClick={() => router.push("/dashboard")}
                     >
                       Ver dispositivos
+                    </button>
+                    <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded">
+                      Eliminar
                     </button>
                   </td>
                 </tr>

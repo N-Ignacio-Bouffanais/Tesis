@@ -11,6 +11,7 @@ module.exports = {
       colors: {
         fuchsia: colors.fuchsia,
       },
+      tableLayout: ["hover", "focus"],
     },
   },
   variants: {

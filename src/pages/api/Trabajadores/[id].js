@@ -1,5 +1,5 @@
 import { dbConnect } from "utils/mongoose";
-import  Trabajador  from "models/Trabajadores";
+import Trabajador from "models/Trabajadores";
 
 dbConnect();
 
