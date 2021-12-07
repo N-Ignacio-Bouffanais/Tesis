@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       colors: {
         fuchsia: colors.fuchsia,
+        indigo: colors.indigo,
       },
       tableLayout: ["hover", "focus"],
     },

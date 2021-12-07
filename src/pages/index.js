@@ -55,7 +55,10 @@ export default function Home({trabajadores}) {
                     >
                       Ver dispositivos
                     </button>
-                    <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded">
+                    <button 
+                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded"
+                    onClick={() =>{ console.log(trabajador._id)}}
+                    >
                       Eliminar
                     </button>
                   </td>

@@ -3,8 +3,8 @@ import Link from "next/link";
 function Navbar() {
   const router = useRouter();
   return (
-    <div>
-      <nav className="bg-gray-800 ">
+    <div className="py-8">
+      <nav className="bg-gray-800 h-16 fixed top-0 inset-x-0">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between">
             <div className="flex space-x-4">

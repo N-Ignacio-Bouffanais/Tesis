@@ -28,7 +28,7 @@ const options = {
 const LineChart = () => (
   <>
     <div className="header">
-      <h1 className="title font-bold text-4xl text-center">Grafico de temperatura</h1>
+      <h1 className="title font-bold text-4xl text-center"></h1>
     </div>
     <Line data={data} options={options} />
   </>

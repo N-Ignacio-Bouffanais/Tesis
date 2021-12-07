@@ -20,13 +20,15 @@ export default async function handler(req, res) {
       try {
         const newTrabajador = new Trabajador(req.body);
         await newTrabajador.save();
-        return res.status(201).json(newTrabajador);
+        return res.status(200).json({success: true, newTrabajador});
       } catch (error) {
-        return res.status(500).json({error: error.message});
+        return res.status(400).json({ success: false, error: error });
       }
 
     default:
-      return res.status(400).json({msg:"este metodo no es soportado"});
+      return res
+        .status(500)
+        .json({ success: false, error: "falla del servidor" });
   }
   
 }
