@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Sidebar = () => {
   return (
-    <div className="md:w-3/12 w-6/12 h-screen shadow-xl p-6 space-y-6 border-4 ">
+    <div className="md:w-3/12 w-6/12 h-full p-6 space-y-6 border-4 sticky top-16">
       <div className="border-b flex justify-around ">
         <h1 className="text-gray-900 text-xl font-bold ">Menú</h1>
       </div>
@@ -23,7 +23,7 @@ const Sidebar = () => {
             />
           </svg>
           <Link href="/dashboard">
-            <a className="text-gray-700 font-bold hover:text-blue-600 hover:cursor-pointer">
+            <a className="text-gray-700 font-bold hover:text-blue-600 hover:cursor-pointer text-lg">
               Dashboard
             </a>
           </Link>
@@ -50,7 +50,7 @@ const Sidebar = () => {
             />
           </svg>
           <Link href="/mapa">
-            <a className="text-gray-700 font-bold hover:text-blue-600 hover:cursor-pointer">
+            <a className="text-gray-700 font-bold hover:text-blue-600 hover:cursor-pointer text-lg">
               Mapa
             </a>
           </Link>
@@ -77,7 +77,7 @@ const Sidebar = () => {
             />
           </svg>
           <Link href="/camara">
-            <a className="text-gray-700 font-bold hover:text-blue-600 hover:cursor-pointer">
+            <a className="text-gray-700 font-bold hover:text-blue-600 hover:cursor-pointer text-lg">
               Camara
             </a>
           </Link>
@@ -97,7 +97,7 @@ const Sidebar = () => {
               d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
             />
           </svg>
-          <p className="text-gray-700 font-bold hover:text-blue-600 hover:cursor-pointer">
+          <p className="text-gray-700 font-bold hover:text-blue-600 hover:cursor-pointer text-lg ">
             Perfil del usuario
           </p>
         </div>

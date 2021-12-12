@@ -3,7 +3,7 @@ import Sidebar from "../components/sidebar";
 import Header from "../components/Header";
 import Card from "components/Card";
 import { Line } from "react-chartjs-2";
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 
 const EventEmitter = require("events");
 const emitter = new EventEmitter();
@@ -15,77 +15,53 @@ var options = {
   clientId: "b0908853",
 };
 var client = mqtt.connect("ws://192.168.18.33:9001", options);
-
 // is the MQTT topic
 client.subscribe("humedad");
 client.subscribe("temperatura");
 client.subscribe("butano");
 client.subscribe("C02");
 
-const data = {
-  labels: ["January", "February", "March", "April", "May", "June", "July"],
-  datasets: [
-    {
-      label: "Temperatura",
-      fill: false,
-      lineTension: 0.1,
-      backgroundColor: "rgba(67,56,202)",
-      borderColor: "rgba(67,56,202)",
-      borderCapStyle: "butt",
-      borderDash: [],
-      borderDashOffset: 0.0,
-      borderJoinStyle: "miter",
-      pointBorderColor: "rgba(67,56,202)",
-      pointBackgroundColor: "#fff",
-      pointBorderWidth: 1,
-      pointHoverRadius: 4,
-      pointHoverBackgroundColor: "rgba(67,56,202)",
-      pointHoverBorderColor: "rgba(220,220,220,1)",
-      pointHoverBorderWidth: 2,
-      pointRadius: 4,
-      pointHitRadius: 20,
-      data: [7, 8, 9, 10, 11, 12, 80],
-    },
-  ],
-};
 
 const dashboard = () => {
   // Sets default React state
   const [mesg, setMesg] = useState(
     <Fragment>
-      <em>sin datos</em>
+      <em>----</em>
     </Fragment>
   );
   const [mesg2, setMesg2] = useState(
     <Fragment>
-      <em>sin datos</em>
+      <em>----</em>
     </Fragment>
   );
   const [mesg3, setMesg3] = useState(
     <Fragment>
-      <em>sin datos</em>
+      <em>----</em>
     </Fragment>
   );
   const [mesg4, setMesg4] = useState(
     <Fragment>
-      <em>sin datos</em>
+      <em>----</em>
     </Fragment>
   );
   var res;
-  var num;
+  //var num;
   var res2;
   var num2;
   var res3;
   var num3;
   var res4;
   var num4;
+  const [chartData, setChartData] = useState({});
+  //const [temperatura, settemperatura] = useState([]);
+  let temp = [];
+  temp.push(parseInt(mesg));
 
   client.on("message", function (topic, message) {
     if (topic === "temperatura") {
       res = message.toString();
-      num = parseFloat(res);
-      console.log(num);
       setMesg(res);
+      
     }
     if (topic === "humedad") {
       res2 = message.toString();
@@ -107,6 +83,40 @@ const dashboard = () => {
     }
     //client.end();
   });
+  
+
+  const Chart = () => {
+    
+    setChartData({
+      labels: ["22/03", "23/03", "24/03", "25/03", "26/03", "27/03"],
+      datasets: [
+        {
+          label: "# ",
+          data: temp,
+          backgroundColor: [
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 206, 86, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
+            "rgba(153, 102, 255, 0.2)",
+            "rgba(255, 159, 64, 0.2)",
+          ],
+          borderColor: [
+            "rgba(255, 99, 132, 1)",
+            "rgba(54, 162, 235, 1)",
+            "rgba(255, 206, 86, 1)",
+            "rgba(75, 192, 192, 1)",
+            "rgba(153, 102, 255, 1)",
+            "rgba(255, 159, 64, 1)",
+          ],
+          borderWidth: 1,
+        },
+      ],
+    });
+  };
+  useEffect(() => {
+        Chart();
+      }, []);
 
   return (
     <div>
@@ -115,11 +125,11 @@ const dashboard = () => {
         <Sidebar />
         <div className="w-screen">
           <Header />
-          <div className="bg-gray-200 h-full ">
+          <div className="bg-gray-200 h-full">
             <div className="flex p-2 space-x-3 ">
               <Card
                 title="Cantidad de dispositivos"
-                dispositivos={5}
+                dispositivos={6}
                 icon={0}
               />
               <Card title="Sensor de Temperarura" temperatura={mesg} icon={1} />
@@ -135,7 +145,7 @@ const dashboard = () => {
                 </div>
                 <div className="p-2">
                   <Line
-                    data={data}
+                    data={chartData}
                     width={90}
                     height={250}
                     options={{ maintainAspectRatio: false }}
@@ -149,7 +159,7 @@ const dashboard = () => {
                 </div>
                 <div className="p-2">
                   <Line
-                    data={data}
+                    data={chartData}
                     width={90}
                     height={250}
                     options={{ maintainAspectRatio: false }}
@@ -161,11 +171,11 @@ const dashboard = () => {
             <div className="flex ml-2 mt-4 space-x-1 mr-2">
               <div className="bg-white  shadow-sm w-6/12 mr-3 h-80 border rounded-xl border-gray-100">
                 <div className="border p-2 border-gray-100 text-center">
-                  <p className="font-semibold font-xl">Sensor de Gas Butano</p>
+                  <p className="font-semibold font-xl">Sensor de gas butano</p>
                 </div>
                 <div className="p-2">
                   <Line
-                    data={data}
+                    data={chartData}
                     width={90}
                     height={250}
                     options={{ maintainAspectRatio: false }}
@@ -175,11 +185,11 @@ const dashboard = () => {
               </div>
               <div className="bg-white  shadow-sm w-6/12 mr-3 h-80 border rounded-xl border-gray-100">
                 <div className="border p-2 border-gray-100 text-center">
-                  <p className="font-semibold font-xl">Sensor de Gas C02</p>
+                  <p className="font-semibold font-xl">Sensor de gas C02</p>
                 </div>
                 <div className="p-2">
                   <Line
-                    data={data}
+                    data={chartData}
                     width={90}
                     height={250}
                     options={{ maintainAspectRatio: false }}

@@ -33,7 +33,7 @@ const Card = (props) => {
 
   return (
     <div
-      className={`transform hover:scale-110 cursor-pointer transition delay-50 w-2/12 mt-1  shadow-xl border rounded-xl bg-gradient-to-r ${
+      className={` w-2/12 mt-1  shadow-xl border rounded-xl bg-gradient-to-r ${
         Color[props.icon]
       }`}
     >
