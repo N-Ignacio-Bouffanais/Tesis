@@ -1,16 +1,19 @@
-import '../styles/globals.css'
+import "../styles/globals.css";
 import Head from "next/head";
+import { SessionProvider } from "next-auth/react";
 
-function MyApp({ Component, pageProps }) {
+export default function MyApp({
+  Component,
+  pageProps: { session, ...pageProps },
+}) {
   return (
-    <>
-    <Head>
-      <title>Tesis Nicolas</title>
-    </Head>
-      <Component {...pageProps} />
-    </>
-  ); 
-  
+    <SessionProvider session={session}>
+      <Head>
+        <title>Tesis Nicolas</title>
+      </Head>
+      <div>
+        <Component {...pageProps} />
+      </div>
+    </SessionProvider>
+  );
 }
-
-export default MyApp

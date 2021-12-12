@@ -1,20 +1,18 @@
-import { MapContainer, TileLayer, Marker} from "react-leaflet";
-import { IconLocation } from "./iconLocation";
+import { Map, TileLayer} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
-const position = [-33.6167, -70.5655];
+import Markers from "./Markers";
 
-const Map = () => {
+const MapView = () => {
   return (
-  <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
-    <TileLayer
-      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    />
-    <Marker position={position} icon={IconLocation}>
-    </Marker>
-  </MapContainer>
+    <Map center={position} zoom={13}>
+      <TileLayer
+        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <Markers />
+    </Map>
   );
 };
 
-export default Map;
+export default MapView;

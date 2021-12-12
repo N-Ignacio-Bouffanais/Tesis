@@ -26,13 +26,18 @@ function Navbar() {
                         d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                       />
                     </svg>
-                    <span className="font-extrabold text-lg text-white">Inicio</span>
+                    <span className="font-extrabold text-lg text-white">
+                      Inicio
+                    </span>
                   </a>
                 </Link>
               </div>
               {/* Primary nav*/}
               <div className="hidden md:flex items-center space-x-1">
-                <button onClick={() => router.push('/Trabajadores/new')} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
+                <button
+                  onClick={() => router.push("/Trabajadores/new")}
+                  className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded"
+                >
                   Añadir trabajador
                 </button>
               </div>
@@ -42,11 +47,12 @@ function Navbar() {
               <p className="font-bold py-5 px-8 text-white">
                 Usuario conectado: Nicolas
               </p>
-              <Link href="#">
-                <a className="py-2 px-3 bg-yellow-500 text-white rounded hover:bg-yellow-700 transition duration-300 font-bold">
-                  Cerrar Sesion
-                </a>
-              </Link>
+              <button
+                className="py-2 px-3 bg-yellow-500 text-white rounded hover:bg-yellow-700 transition duration-300 font-bold"
+                onClick={() => router.push("/login")}
+              >
+                Cerrar Sesion
+              </button>
             </div>
           </div>
         </div>
